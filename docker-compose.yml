@@ -1,0 +1,30 @@
+version: 3
+
+services:
+  webshifka:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:
+      - /bin/sh -c "ls /"
+    environment:
+      - DB_USER=""
+      - DB_PASSWORD=""
+      - DB_NAME=""
+      - DB_HOST=db
+      - DB_PORT=5432 
+    depends_on:
+      - db   
+  db:
+    image: postgres:11
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=""
+      - POSTGRES_PASSWORD=""
+      - POSTGRES_DB=""
+  redis:
+
+  
