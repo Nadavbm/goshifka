@@ -7,9 +7,13 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"github.com/gorrila/mux"
+
+	"github.com/nadavbm/goshifka/webshifka/logger"
 )
 
 func main() {
+	InitLogger()
+	defer logger.Sync
 	handleRequests()
 }
 
